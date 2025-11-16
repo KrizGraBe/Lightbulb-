@@ -52,11 +52,21 @@
     button:hover {
       background-color: #444;
     }
+    .fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade.show {
+  opacity: 1;
+}
+
   </style>
 </head>
 <body>
 
   <h2>Tap to Toggle Lightbulb</h2>
+  <p id="status-message" class="fade">The light is OFF</p>
   <img id="bulb" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="Lightbulb">
   <br>
   <button onclick="toggleBulb()">Switch</button>
@@ -64,17 +74,27 @@
   <script>
     let isOn = false;
 
-    function toggleBulb() {
-      const bulb = document.getElementById("bulb");
-      if (isOn) {
-        bulb.src = "https://www.w3schools.com/js/pic_bulboff.gif";
-        bulb.classList.remove("glow");
-      } else {
-        bulb.src = "https://www.w3schools.com/js/pic_bulbon.gif";
-        bulb.classList.add("glow");
-      }
-      isOn = !isOn;
-    }
+function toggleBulb() {
+  const bulb = document.getElementById("bulb");
+  const message = document.getElementById("status-message");
+
+  if (isOn) {
+    bulb.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+    bulb.classList.remove("glow");
+    message.textContent = "The light is OFF";
+  } else {
+    bulb.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+    bulb.classList.add("glow");
+    message.textContent = "The light is ON";
+  }
+
+  // Animate message
+  message.classList.remove("show"); // reset
+  void message.offsetWidth;         // trigger reflow
+  message.classList.add("show");
+
+  isOn = !isOn;
+}
   </script>
 
 </body>
