@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lightbulb App</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 60%;
+      max-width: 200px;
+      border: 4px solid #ccc;
+      border-radius: 10px;
+      padding: 5px;
+      background-color: white;
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .glow {
+      box-shadow: 0 0 20px 5px yellow;
+      border-color: yellow;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #222;
+      color: yellow;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tap to Toggle Lightbulb</h2>
+  <img id="bulb" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="Lightbulb">
+  <br>
+  <button onclick="toggleBulb()">Switch</button>
+
+  <script>
+    let isOn = false;
+
+    function toggleBulb() {
+      const bulb = document.getElementById("bulb");
+      if (isOn) {
+        bulb.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+        bulb.classList.remove("glow");
+      } else {
+        bulb.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+        bulb.classList.add("glow");
+      }
+      isOn = !isOn;
+    }
+  </script>
+
+</body>
+</html>
